@@ -1,11 +1,11 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Dict
 
 
 class InsertVectorRequest(BaseModel):
     id: str
     vector: List[float]
-    metadata: dict
+    metadata: Dict
 
 
 class SearchRequest(BaseModel):
@@ -16,7 +16,7 @@ class SearchRequest(BaseModel):
 class SearchResultItem(BaseModel):
     id: str
     score: float
-    metadata: dict
+    metadata: Dict
 
 
 class SearchResponse(BaseModel):
