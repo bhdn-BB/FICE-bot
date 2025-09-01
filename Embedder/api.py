@@ -11,7 +11,7 @@ app = FastAPI(title="Embedder Service")
 
 @app.post("/embed", response_model=EmbedResponse)
 async def embed(req: EmbedRequest):
-    vectors = model.encode(req.texts, normalize_embeddings=True).tolist()
+    vectors = model.encode(req.query, normalize_embeddings=True).tolist()
     return {"embeddings": vectors}
 
 if __name__ == "__main__":
