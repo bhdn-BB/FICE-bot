@@ -12,7 +12,7 @@ app = FastAPI(title="Embedder Service")
 @app.post("/embed", response_model=EmbedResponse)
 async def embed(req: EmbedRequest):
     vectors = model.encode(req.query, normalize_embeddings=True).tolist()
-    return {"embeddings": vectors}
+    return EmbedResponse(embeddings=vectors)
 
 if __name__ == "__main__":
     uvicorn.run(app, host=HOST, port=PORT)
